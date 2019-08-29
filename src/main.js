@@ -23,8 +23,9 @@ Vue.use(VueAxios, axios)
 axios.defaults.baseURL = 'https://autumnfish.cn';
 // 定义路由
 const routes = [
-  { path: '/', component: Sider },
-  { path: '/', redirect: Sider },
+  { path: '/sider', component: Sider },
+  // 将组件地址重定向到起始地址'/'
+  { path: '/', redirect: '/sider' },
   { path: '/results/:keywords', component: Results },
   { path: '/player/:id', component: Player },
   { path: '/video/:mvid', component: Video },
