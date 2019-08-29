@@ -4,19 +4,27 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 
 // 引入组件
 import Results from './components/results.vue'
 import Player from './components/player.vue'
 import Video from './components/video.vue'
 import Comment from './components/comment.vue'
+import Sider from './components/sider.vue'
 
 
+Vue.use(ElementUI);
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
-
+// 基地址
+axios.defaults.baseURL = 'https://autumnfish.cn';
 // 定义路由
 const routes = [
+  { path: '/', component: Sider },
+  { path: '/', redirect: Sider },
   { path: '/results/:keywords', component: Results },
   { path: '/player/:id', component: Player },
   { path: '/video/:mvid', component: Video },

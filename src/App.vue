@@ -30,6 +30,11 @@ export default {
       keywords:'周杰伦'
     }
   },
+  watch: {
+    keywords(){
+      this.searchMusic();      
+    }
+  },
   methods: {
     searchMusic(){
       this.$router.push(`/results/${this.keywords}`)
