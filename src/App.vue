@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="player">
+    <h2 class="title">黑云音乐</h2>
+    <div class="search">
+      <input type="text" v-model="keywords" @keyup.enter="searchMusic()"/>
+      <button>
+        <span class="iconfont icon-search" @click="searchMusic()"></span>
+      </button>
+    </div>
+    <div class="tab-wrapper">
+      <!-- tab栏 -->
+      <div class="tab-bar">
+        <router-link to="`/results/${keywords}`" class="bar-item">搜索结果</router-link>
+        <router-link to="`/player/${id}`" class="bar-item">歌曲播放</router-link>
+        <router-link to="`/video/${mvid}`" class="bar-item">mv</router-link>
+        <router-link to="`/comment/${id}`" class="bar-item">歌曲评论</router-link>
+      </div>
+      <!-- 对应的内容区域 -->
+      <div class="tab-content">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      keywords:'周杰伦'
+    }
+  },
+  methods: {
+    searchMusic(){
+      this.$router.push(`/results/${this.keywords}`)
+    }
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url("./assets/css/index.css");
+@import url("./assets/css/iconfont.css");
 </style>
